@@ -46,8 +46,6 @@ def SaveData(user, pwd):
 	wks.update_cell(current, 3, pwd)
 	wks.update_cell(current, 4, StartingCoin)
 def CoinRepair(amount, id):
-	if (amount > 1000000000):
-		return 0
 	data_list = ListSheet()
 	cell = wks.cell(int(id) + 2, 4)
 	Ncoin = int(data_list[id][3]) + int(amount)
