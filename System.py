@@ -38,12 +38,13 @@ def CheckID(ID):
 	else:
 		return 0
 def SaveData(user, pwd):
+	StartingCoin = 1000
 	data_list = ListSheet()
 	current = len(data_list) + 2
 	wks.update_cell(current, 1, current - 1)
 	wks.update_cell(current, 2, user)
 	wks.update_cell(current, 3, pwd)
-	wks.update_cell(current, 4, 1000)
+	wks.update_cell(current, 4, StartingCoin)
 def CoinRepair(amount, id):
 	if (amount > 1000000000):
 		return 0
