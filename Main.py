@@ -5,6 +5,10 @@ import Menu
 import random
 import System
 from time import sleep
+try:
+  import gspread
+except:
+  os.system('pip install gspread')
 # [CODE]
 def Exit():
 	os.sys.exit()
