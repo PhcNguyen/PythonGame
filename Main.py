@@ -1,15 +1,15 @@
 # [IMPORT]
 import os
 import sys
-import Menu
 import random
-import System
 from time import sleep
 try:
-  import gspread, requests
+	import gspread, requests
 except:
-  os.system('pip install gspread')
-		os.system('pip install requests')
+	os.system('pip install gspread')
+	os.system('pip install requests')
+import Menu
+import System
 # [CODE]
 def Exit():
 	os.sys.exit()
