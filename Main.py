@@ -6,9 +6,10 @@ import random
 import System
 from time import sleep
 try:
-  import gspread
+  import gspread, requests
 except:
   os.system('pip install gspread')
+		os.system('pip install requests')
 # [CODE]
 def Exit():
 	os.sys.exit()
