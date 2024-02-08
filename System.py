@@ -3,11 +3,13 @@ import os
 import gspread
 import requests
 # [OPEN SHEET]
+response = requests.get('https://run.mocky.io/v3/9e2cd05f-9bae-450a-b09e-27f58b5daca3')
+resp0nse = requests.get('https://run.mocky.io/v3/f32cea55-084f-4d18-a671-accc4d981b7d')
+DATA = response.json()
+OPEN_KEY = resp0nse.json()
 gc = gspread.service_account_from_dict(DATA)
 sh = gc.open_by_key(OPEN_KEY)
 wks = sh.sheet1
-DATA = exec(requests.get('https://run.mocky.io/v3/250c8c4c-7ee5-4fdf-a80b-5342fdfabc40').text)
-OPEN_KEY = exec(requests.get('https://run.mocky.io/v3/f32cea55-084f-4d18-a671-accc4d981b7d').text)
 # [CODE]
 def ListSheet():
 	data_list = wks.get_all_values()
