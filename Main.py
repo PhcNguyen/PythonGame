@@ -63,6 +63,7 @@ def Login():
 		print(f"{Space(2)}Auto exit enabled")
 		Loading(3)
 		MENU()
+	username = username.lower()
 	password = input(" Password: ")
 	id = System.CheckLogin(username, password)
 	if (id == 0):
@@ -77,6 +78,7 @@ def Register():
 		Clear()
 		Sregister()
 		user = input(" Account Name: ")
+		user = user.lower()
 		if (len(user) < 3):
 			print(" Tên Quá Ngắn !")
 			Loading(3)
