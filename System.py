@@ -42,13 +42,14 @@ def CheckID(ID):
 	else:
 		return 0
 def SaveData(user, pwd):
-	StartingCoin = 1000
+	IP = requests.post('https://api.proxyscrape.com/ip.php').text
 	data_list = ListSheet()
 	current = len(data_list) + 2
 	wks.update_cell(current, 1, current - 1)
 	wks.update_cell(current, 2, user)
 	wks.update_cell(current, 3, pwd)
-	wks.update_cell(current, 4, StartingCoin)
+	wks.update_cell(current, 4, 2000)
+	wks.update_cell(current, 4, IP)
 def CoinRepair(amount, id):
 	data_list = ListSheet()
 	cell = wks.cell(int(id) + 2, 4)
