@@ -1,10 +1,10 @@
 # [IMPORT]
 import os
 import sys
+import Menu
 import random
 import System
 from time import sleep
-from Menu import Smenu, Sregister, Slogin, Sbanner, SchangePwd, SchangeCoin, Scoinmining, Scharts, SXs, SchangeCoin1, SchangeCoin2, SXs1, SXs2, SXs3, Sdice
 # [CODE]
 def Exit():
 	os.sys.exit()
@@ -33,7 +33,7 @@ def Space(Number):
 	return Space
 def MENU():
 	Clear()
-	Smenu()
+	Menu.Smenu()
 	select = input(" CHỌN CHẾ ĐỘ: ")
 	if select.isdigit():
 		option = int(select)
@@ -56,14 +56,13 @@ def MENU():
 		MENU()
 def Login():
 	Clear()
-	Slogin()
+	Menu.Slogin()
 	username = input(" Account: ")
 	if username.strip() == "":
 		print(f"{Space(2)}Error !")
 		print(f"{Space(2)}Auto exit enabled")
 		Loading(3)
 		MENU()
-	username = username.lower()
 	password = input(" Password: ")
 	id = System.CheckLogin(username, password)
 	if (id == 0):
@@ -76,7 +75,7 @@ def Login():
 def Register():
 	def User():
 		Clear()
-		Sregister()
+		Menu.Sregister()
 		user = input(" Account Name: ")
 		user = user.lower()
 		if (len(user) < 3):
@@ -96,9 +95,9 @@ def Register():
 			return user
 	def Password(user):
 		Clear()
-		Sregister()
+		Menu.Sregister()
 		print(f" Account Name: {user}")
-		pwd = input("Enter Password: ")
+		pwd = input(" Enter Password: ")
 		if (len(pwd) < 3):
 			print(" Pass Quá Ngắn !")
 			Loading(3)
@@ -111,10 +110,12 @@ def Register():
 	user = User()
 	pwd = Password(user)
 	System.SaveData(user, pwd)
+	Loading(3)
+	MENU()
 def ChangeCoin():
 	def Coin():
 		Clear()
-		SchangeCoin2()
+		Menu.SchangeCoin2()
 		pwd = input(" Nhập Mật Khẩu: ")
 		if (pwd != '12345'):
 			MENU()
@@ -134,7 +135,7 @@ def ChangeCoin():
 			ChangeCoin()
 	def List():
 		Clear()
-		SchangeCoin1()
+		Menu.SchangeCoin1()
 		System.ListOfAccount()
 		Enter()
 		Loading(3)
@@ -161,7 +162,7 @@ def ChangeCoin():
 		ChangeCoin()
 def MenuMain(id):
 	Clear()
-	Sbanner()
+	Menu.Sbanner()
 	user, coin = System.LoadDataUser(id)
 	print(f" User: {user}          Coin: {coin} Xu")
 	select = input(" CHỌN CHẾ ĐỘ: ")
@@ -188,7 +189,7 @@ def MenuMain(id):
 def XS(id):
 	Clear()
 	def Check(id):
-		SXs1()
+		Menu.SXs1()
 		user, coin = System.LoadDataUser(id)
 		coin = System.LoadDataCoin(id)
 		if (coin < 0 or coin == 0):
@@ -228,7 +229,7 @@ def XS(id):
 		return random.choice(result_list)
 	def CoinBet(id, select):
 		Clear()
-		SXs2()
+		Menu.SXs2()
 		select = int(select)
 		user, coin = System.LoadDataUser(id)
 		print(f" User: {user}{Space(4)}Coin: {coin} Xu")
@@ -290,7 +291,7 @@ def XS(id):
 	MenuMain(id)
 def CoinMining(id):
 	Clear()
-	Scoinmining()
+	Menu.Scoinmining()
 	user, coin = System.LoadDataUser(id)
 	print(f" User: {user}{Space(4)}Coin: {coin} Xu")
 	blocks = input(f" Nhập Số Block Đào: ")
@@ -320,8 +321,8 @@ def CoinMining(id):
 def BXH(id):
 	Clear()
 	User, user, Coin, coin = System.Charts(id)
-	Scharts(1, User, Coin)
-	Scharts(2, user, coin)
+	Menu.Scharts(1, User, Coin)
+	Menu.Scharts(2, user, coin)
 	Enter()
 	if (id == 0):
 		MENU()
@@ -337,7 +338,7 @@ def Dice(id):
 			MenuMain(id)
 	def Select(id):
 		Clear()
-		Sdice()
+		Menu.Sdice()
 		Select = input(" Chọn Cửa: ")
 		if Select.isdigit():
 			Select = int(Select)
@@ -359,7 +360,7 @@ def Dice(id):
 			3: 'Chẳn', 4: 'Lẻ'
 		}
 		Clear()
-		SXs2()
+		Menu.SXs2()
 		user, coin = System.LoadDataUser(id)
 		print(f" User: {user}{Space(4)}Coin: {coin} Xu")
 		print(f" Chọn: {XP[Select]}")
